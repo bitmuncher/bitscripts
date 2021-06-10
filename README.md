@@ -16,5 +16,5 @@ This ensured that any logged PII was quickly removed from the logs and, of cours
 *gpg_droplet.applescript*  
 This droplet was used on a dedicated machine by a newspaper publisher to decrypt whistleblower leaks that were encrypted using GPG to protect them while transport.
 
-*Default.bttpreset*
-My configuration for [BetterTouchTool](https://folivora.ai) to modify the touchbar on my Mac. It contains buttons to switch the connections of my AirPods to my MacBook if they are currently connected to my iPhone or iPad, to open the Launchpad, the control center and the screenshot tool and to adjust monitor brightness and volume settings. 
+*Default.bttpreset*  
+My configuration for [BetterTouchTool](https://folivora.ai "Homepage of BetterTouchTool") to modify the touchbar on my Mac. It contains nice colored buttons to switch the connections of my AirPods to my MacBook if they are currently connected to my iPhone or iPad, to open the Launchpad, the control center and the screenshot tool and to adjust monitor brightness and volume settings. 

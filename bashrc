@@ -1,3 +1,9 @@
+###
+### This Bash configuration is intended for macOS
+### It will not work without installed Homebrew: https://brew.sh
+### The best way is to use the bash from Homebrew.
+###
+
 ### set the PATH
 export PATH=/usr/local/bin:$HOME/.pyenv/shims:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin
 

@@ -12,3 +12,6 @@ You can pass a string as parameter to check if the string contains an IBAN. Or y
 `ibancheck.py "foobar DE123456789012345678900 blabla"`  
 `ibancheck.py "foobarDE123456789012345678900blabla"`  
 This ensured that any logged PII was quickly removed from the logs and, of course, we informed the responsible developers that they needed to adjust their logging.
+
+*gpg_droplet.applescript*  
+This droplet was used on a dedicated machine by a newspaper publisher to decrypt whistleblower leaks that were encrypted using GPG to protect them while transport. 

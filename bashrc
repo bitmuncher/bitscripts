@@ -80,9 +80,14 @@ if [ -f ~/.bash_aliases ]; then
 fi
 
 # a fancy prompt
-TIME=$(date +%H:%M)
-FILES=$(ls -1|wc -l|tr -d "[:blank:]")
-PS1="\! \[\033[01;31m\]\\u\[\033[01;33m\]@\[\033[01;32m\]\H\[\033[01;33m\]:\w [$TIME] [$FILES] \e[0m\n\[\033[01;35m\]\$\[\033[00m\] "
+#TIME=$(date +%H:%M)
+#FILES=$(ls -1|wc -l|tr -d "[:blank:]")
+#PS1="\! \[\033[01;31m\]\\u\[\033[01;33m\]@\[\033[01;32m\]\H\[\033[01;33m\]:\w [$TIME] [$FILES] \e[0m\n\[\033[01;35m\]\$\[\033[00m\] "
+#export PS1
+prompt_color='\[\033[;94m\]'
+info_color='\[\033[1;34m\]'
+prompt_symbol=💀
+PS1=$prompt_color'\u@\h) \[\033[0;1m\][\w] $(parse_git_branch)\n'$prompt_color'└─'$info_color'\[\033[0;1m\]'$prompt_symbol' '
 export PS1
 
 # for GPG

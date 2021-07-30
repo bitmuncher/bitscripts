@@ -18,3 +18,6 @@ This droplet was used on a dedicated machine by a newspaper publisher to decrypt
 
 *Default.bttpreset*  
 My configuration for [BetterTouchTool](https://folivora.ai "Homepage of BetterTouchTool") to modify the touchbar on my Mac. It contains nice colored buttons to switch the connections of my AirPods to my MacBook if they are currently connected to my iPhone or iPad, to open the Launchpad, the control center and the screenshot tool and to adjust monitor brightness and volume settings. 
+
+*git_pull_all_branches.sh*  
+A simple Bash script to fetch all remote branches for a Git repository.

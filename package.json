@@ -3,5 +3,11 @@
     "version": "0.0.1",
     "dependencies": {
         "portscanner": "^2.2.0"
-    }
+    },
+    "funding": [
+        {
+            "type": "individual",
+            "url": "https://github.com/sponsors/standardnotes"
+        }
+    ]
 }

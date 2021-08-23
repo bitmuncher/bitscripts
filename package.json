@@ -1,0 +1,7 @@
+{
+    "name": "bitscripts",
+    "version": "0.0.1",
+    "dependencies": {
+        "portscanner": "^2.2.0"
+    }
+}

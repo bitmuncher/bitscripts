@@ -131,3 +131,12 @@ if ! [ -f "$PRIVFILE" ]; then
     touch $PRIVFILE
 fi
 source $PRIVFILE
+
+# we want to have normal Docker output
+export DOCKER_BUILDKIT=0
+
+# other completions from software installed by homebrew
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+    . $(brew --prefix)/etc/bash_completion
+fi
+

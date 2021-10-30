@@ -1,6 +1,4 @@
-# add this to your ~/.bashrc to get a nice looking bash prompt
-# if you don't need to know what python or node.js version your current shell is using,
-# you can also remove the functions and their calls
+# a fancy prompt
 parse_git_branch() {
     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
 }
@@ -14,4 +12,4 @@ get_nodejs() {
     node --version 2>&1
 }
 prompt_symbol=💀
-export PS1='\[\033[1;32m\]\u\[\033[1;37m\]@\[\033[;94m\]\h \[\033[1;37m\][\w] \[\033[0;35m\]$(parse_git_branch)\n[Python $(get_python)]\n[Node.js $(get_nodejs)]\n\[\033[;94m\]└─\[\033[1;33m\]$(get_time)\[\033[;0m\] $prompt_symbol '
+export PS1='\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h \[\033[33;1m\][\w] \[\033[0;35m\]$(parse_git_branch)\n[Python $(get_python)]\n[Node.js $(get_nodejs)]\n\[\033[;94m\]└─\[\033[1;33m\]$(get_time)\[\033[;0m\] $prompt_symbol  '

@@ -44,6 +44,7 @@ then
     echo "TinyFugue not found. I install it via Homebrew"
     brew install tinyfugue
 fi
+alias bl='tf bl.mud.at 5678'
 
 # Homebrew has a newer curl than macOS
 CURLBIN=/usr/local/opt/curl/bin/curl
@@ -62,7 +63,7 @@ shopt -s histappend
 HISTSIZE=1000
 HISTFILESIZE=2000
 
-# python 3
+# python
 if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
 fi
@@ -80,24 +81,43 @@ if [ -f ~/.bash_aliases ]; then
 fi
 
 # a fancy prompt
-prompt_color='\[\033[;94m\]'
-info_color='\[\033[1;34m\]'
+
+# if we're in a git repo, show the current branch
+parse_git_branch() {
+    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+}
+# what time is it?
+get_time() {
+    date +%H:%M
+}
+# I use pyenv to switch between different python versions;
+# this shows me the currently active version in my prompt
+get_python() {
+    python --version 2>&1 |awk '{print $2}'
+}
+# sometimes it's useful to know what node.js version is currently active
+get_nodejs() {
+    node --version 2>&1
+}
+# bring death to the world ;) 
 prompt_symbol=💀
-PS1=$prompt_color'\u@\h) \[\033[0;1m\][\w] $(parse_git_branch)\n'$prompt_color'└─'$info_color'\[\033[0;1m\]'$prompt_symbol' '
-export PS1
+export PS1='\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h \[\033[33;1m\][\w] \[\033[0;35m\]$(parse_git_branch)\n├[Python $(get_python)]\n├[Node.js $(get_nodejs)]\n\[\033[;94m\]└─\[\033[1;33m\]$(get_time)\[\033[;0m\] $prompt_symbol '
 
 # for GPG
 export GPG_TTY=`tty`
 
+# if GNU coreutils are available we use dracula-style colors for ls
+if [ -f "/usr/local/opt/coreutils/libexec/gnubin/ls" ]; then
+    export LS_COLORS='no=00:fi=00:di=01;31:ln=01;36:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arj=01;31:*.taz=01;31:*.lzh=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.gz=01;31:*.bz2=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.avi=01;35:*.fli=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.ogg=01;35:*.mp3=01;35:*.wav=01;35:'
+    alias ls='/usr/local/opt/coreutils/libexec/gnubin/ls -a --color'
+fi
+
 # some aliases
-alias ls='ls -a'
-alias grep='grep --color=auto'
 SYNERGYFILE=/Library/LaunchAgents/com.symless.synergy.synergy-service.plist
 if ! test -f "$SYNERGYFILE"; then
     alias synergy-stop="launchctl unload /Library/LaunchAgents/com.symless.synergy.synergy-service.plist"
     alias synergy-start="launchctl load /Library/LaunchAgents/com.symless.synergy.synergy-service.plist"
 fi
-alias bl='tf bl.mud.at 5678'
 
 export GEM_HOME=$HOME/Software/ruby
 
@@ -111,3 +131,12 @@ if ! [ -f "$PRIVFILE" ]; then
     touch $PRIVFILE
 fi
 source $PRIVFILE
+
+# we want to have normal Docker output
+export DOCKER_BUILDKIT=0
+
+# other completions from software installed by homebrew
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+    . $(brew --prefix)/etc/bash_completion
+fi
+

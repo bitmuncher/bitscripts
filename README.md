@@ -5,6 +5,9 @@
 *bashrc*  
 This is my bash configuration. It's intended to use on macOS and requires [Homebrew](https://brew.sh "Homebrew Homepage").
 
+*gpt-cli.py*
+A very simple script to query ChatGPT via API using the model 'gpt-3.5-turbo-1106'. It asks for a context and a question and prints out the response from ChatGPT. You must specify your API key in environment variable 'GPT_API_KEY' if your shell environment (for example in Bash via `export GPT_API_key=sk-<yourkey>`. You can get additional output for debugging by using `-d` or `--debug` as a parameter for the script.
+
 *ibancheck.py*  
 Initially I wrote the function used here in a script for [Personio](https://www.personio.com "Personio's Homepage") that checks the content of log files for PII.  
 You can pass a string as parameter to check if the string contains an IBAN. Or you pass only the IBAN to check if it's valid. Like this:  

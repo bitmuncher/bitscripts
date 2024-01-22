@@ -30,3 +30,7 @@ My configuration for [BetterTouchTool](https://folivora.ai "Homepage of BetterTo
 *git_pull_all_branches.sh*  
 
 A simple Bash script to fetch all remote branches for a Git repository.
+
+*curses_color_codes.py*
+
+Print color codes used by (n)curses in a 256-color terminal.
